@@ -6,25 +6,24 @@
 //
 
 import Cocoa
+import SwiftUI
 
-@main
+//@main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    
-
+    private var window: NSWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 270),
+            styleMask: [.miniaturizable, .closable, .resizable, .titled],
+            backing: .buffered, defer: false)
+        window.center()
+        window.title = "No Storyboard Window"
+        window.contentView = NSHostingView(rootView: SwiftUIView())
+
+        window.makeKeyAndOrderFront(nil)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-        return true
-    }
-
-
+    
 }
 
